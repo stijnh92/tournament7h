@@ -4,11 +4,11 @@ from django.db import models
 class Team(models.Model):
     name = models.CharField(max_length=30, verbose_name='Name')
     responsible = models.CharField(max_length=40, verbose_name='Team Responsible')
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
     street = models.CharField(max_length=100, verbose_name='Street + Nr.')
     city = models.CharField(max_length=40, verbose_name='City')
     telephone = models.CharField(max_length=15, verbose_name='Telephone Nr.')
-    team_id = models.CharField(unique=True, max_length=16)
+    team_id = models.CharField(unique=True, max_length=16, blank=True)
 
     def __str__(self):
         return self.name

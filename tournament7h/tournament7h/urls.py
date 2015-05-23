@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from tournament.views import team as team_view
 
 admin.autodiscover()
 
@@ -12,4 +13,5 @@ urlpatterns = [
     url(r'^create-team$', 'tournament.views.create_team.page', name="create_team"),
     url(r'^connection/$', 'tournament.views.connections.page', name="public_connection"),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^tournament/', include('tournament.urls', namespace='tournament')),
     ]

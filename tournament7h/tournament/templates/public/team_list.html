@@ -6,5 +6,9 @@
     Team list
 {% endblock %}
 {% block article_content %}
-    <h1>{{ object.name }}</h1>
+    {% for article in object_list %}
+        <li>{{ article.name }}</li>
+        {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
 {% endblock %}
