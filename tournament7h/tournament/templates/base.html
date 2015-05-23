@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<html>
+<head>
+	<title>
+	{% block title_html %}{% endblock %}
+	</title>
+
+	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+	<h1>
+		Tournament - {% block h1 %}{% endblock %}
+	</h1>
+	<article>
+		{% block article_content %}{% endblock %}
+	</article>
+</body>
+</html>

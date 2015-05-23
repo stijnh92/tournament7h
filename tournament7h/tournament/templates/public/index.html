@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Team list
+{% endblock %}
+{% block h1 %}
+    Team list
+{% endblock %}
+{% block article_content %}
+    <h3>{{ action }}</h3>
+    {% if all_teams|length > 0 %}
+        <table>
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Title</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for team in all_teams %}
+                <tr>
+                    <td>{{ team.id }}</td>
+                    <td>{{ team.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <span>No team.</span>
+    {% endif %}
+{% endblock %}
