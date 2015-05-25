@@ -2,16 +2,14 @@
 {% block title_html %}
     Team list
 {% endblock %}
-{% block h1 %}
-    Team list
-{% endblock %}
+
 {% block article_content %}
     <h1>{{ object.name }}</h1>
 
 
-    {% for player in object.player_set.all %}
+    {% for goal in object.goal_set.all %}
 
-        <h2>{{ player }}</h2>
+        <h2>{{ goal }}</h2>
 
     {% endfor %}
 

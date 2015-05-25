@@ -7,8 +7,10 @@
 {% endblock %}
 {% block article_content %}
     {% for article in object_list %}
-        <li>{{ article.name }}</li>
+        <li><a href="{% url "tournament:team_detail" article.pk %}">{{ article.name }}</a></li>
         {% empty %}
-        <li>No articles yet.</li>
+        <li>
+                No articles yet.
+        </li>
     {% endfor %}
 {% endblock %}

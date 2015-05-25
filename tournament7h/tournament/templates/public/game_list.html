@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Games
+{% endblock %}
+
+{% block article_content %}
+    <div class="container">
+
+        <h1>Western Conference</h1>
+        {% for game in object_list %}
+
+            {% if game.group.code == 'WES' %}
+
+                <div class="row">
+
+                    <div class="col-md-4 text-center">
+                        {{ game.team_home }}
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{% url "tournament:game_detail" game.pk %}">{{ game.date }}</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        {{ game.team_away }}
+                    </div>
+
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <h1>Eastern Conference</h1>
+        {% for game in object_list %}
+
+            {% if game.group.code == 'EAS' %}
+
+                <div class="row">
+
+                    <div class="col-md-4 text-center">
+                        {{ game.team_home }}
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{% url "tournament:game_detail" game.pk %}">{{ game.date }}</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        {{ game.team_away }}
+                    </div>
+
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+{% endblock %}
