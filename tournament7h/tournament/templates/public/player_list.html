@@ -3,13 +3,21 @@
     Players
 {% endblock %}
 {% block article_content %}
-
-    {% for key, values in players.items %}
-        <h1>{{key}}</h1>
-        {% for v in values %}
-            <a>{{v}}</a>
+    <div class="container">
+        {% for key, values in players.items %}
+            {% if values %}
+                <div class="row">
+                    <h1>{{key}}</h1>
+                </div>
+                {% for v in values %}
+                    <div class="row"><a href="{% url "tournament:player_detail" v.pk %}">{{v}}</a></div>
+                {% endfor %}
+            {%  endif %}
         {% endfor %}
-    {% endfor %}
+
+    </div>
+
+
 
 
 {% endblock %}

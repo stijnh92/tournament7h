@@ -4,10 +4,20 @@ from django.shortcuts import render
 
 
 def player_list_view(request):
-    all_players = Player.objects.all()
+    players = {}
+    alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+    for letter in alphabet:
+        players.update({
+            letter: Player.objects.filter(lastname__startswith=letter).order_by('lastname')
+        })
+
+    print players
+
     return render(request, 'public/player_list.html',
                   {
-                      'players': {'A': all_players, 'B': all_players }
+                      'players': players
                   }
                   )
 
