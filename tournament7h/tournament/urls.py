@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^teams/$', view=team_view.TeamListView.as_view(), name="team_list"),
     url(r'^teams/(?P<pk>[0-9]+)/$', view=team_view.TeamDetailView.as_view(), name="team_detail"),
 
-    url(r'^players/$', view=player_view.PlayerListView.as_view(), name="player_list"),
+    url(r'^players/$',  'tournament.views.player.player_list_view', name="player_list"),
     url(r'^player/(?P<pk>[0-9]+)/$', view=player_view.PlayerDetailView.as_view(), name="player_detail"),
 
     url(r'^groups/$', view=group_view.GroupListView.as_view(), name="group_list"),

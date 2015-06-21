@@ -49,7 +49,7 @@
                         {{ forloop.counter }}
                     </td>
                     <td>
-                        {{ team.team.name }}
+                        <a href="{% url "tournament:team_detail" team.team.pk %}"> {{ team.team.name }} </a>
                     </td>
                     <td>
                         {{ team.games_played }}

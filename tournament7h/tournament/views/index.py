@@ -6,6 +6,5 @@ def page(request):
     all_teams = Team.objects.all()
     return render(request, 'public/index.html',
                   {
-                      'action': "Display all teams",
-                      'all_teams': all_teams}
+                      'teams': all_teams}
                   )

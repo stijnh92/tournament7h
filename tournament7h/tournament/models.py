@@ -6,7 +6,7 @@ from operator import itemgetter
 class Team(models.Model):
     name = models.CharField(max_length=30, verbose_name='Name')
     responsible = models.CharField(max_length=40, verbose_name='Team Responsible')
-    image = models.ImageField(blank=True)
+    image = models.ImageField(blank=True, upload_to='teams/')
     street = models.CharField(max_length=100, verbose_name='Street + Nr.')
     city = models.CharField(max_length=40, verbose_name='City')
     telephone = models.CharField(max_length=15, verbose_name='Telephone Nr.')
@@ -18,8 +18,11 @@ class Team(models.Model):
 class Player(models.Model):
     firstname = models.CharField(max_length=50, verbose_name='First Name')
     lastname = models.CharField(max_length=50, verbose_name='Last Name')
-    number = models.CharField(max_length=3, verbose_name='Number')
+    number = models.IntegerField(verbose_name='Number')
     team = models.ForeignKey(Team, verbose_name="Team")
+
+    class Meta:
+        ordering = ['team', 'number']
 
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)
@@ -101,6 +104,9 @@ class Game(models.Model):
 
     def __str__(self):
         return '%s, %s - %s' % (self.group, self.team_home, self.team_away)
+
+    class Meta:
+        ordering = ['date', 'group']
 
 
 class Goal(models.Model):

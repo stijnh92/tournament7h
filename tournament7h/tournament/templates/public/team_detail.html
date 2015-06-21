@@ -1,18 +1,59 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+
 {% block title_html %}
-    Team list
-{% endblock %}
-{% block h1 %}
-    Team list
+    {{ object.name }}
 {% endblock %}
 {% block article_content %}
-    <h1>{{ object.name }}</h1>
+<div class="container">
+    <div class="jumbotron">
+        <h1>{{ object.name }}</h1>
+        <p>
+            <strong>Coach: </strong> {{ object.responsible }} <br />
+            <strong>Address: </strong> {{ object.street }} <br />
+            <strong>City: </strong> {{ object.city }} <br />
+            <strong>Phone: </strong> {{ object.telephone }}
+        </p>
+    </div>
 
-
+    <h1>Players</h1>
     {% for player in object.player_set.all %}
 
-        <h2>{{ player }}</h2>
+
+
+        {% if forloop.counter0|divisibleby:3  %}
+            <div class="row">
+        {% endif %}
+
+
+
+    <div class="col-md-4">
+
+        <a href="{% url "tournament:player_detail" player.pk %}">
+            <div class="player-box">
+                <div class="row">
+                    <div class="col-md-4 col-xs-4">
+
+                       <h4 class="player-box-number">{{ player.number }}</h4>
+
+
+                    </div>
+                    <div class="col-md-8 col-xs-8">
+                        <h4>{{ player}} </h4>
+
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    {% if forloop.counter|divisibleby:3  %}
+        </div>
+    {% endif %}
+
 
     {% endfor %}
+</div>
 
 {% endblock %}

@@ -115,3 +115,6 @@ TEMPLATE_DIRS = (
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, '../tournament/static/'),
 )
+
+MEDIA_ROOT=os.path.join(PROJECT_ROOT, '../tournament/static/src/img/')
+MEDIA_URL='/img/'

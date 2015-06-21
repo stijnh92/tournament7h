@@ -3,11 +3,13 @@
     Players
 {% endblock %}
 {% block article_content %}
-    {% for player in object_list %}
-        <li><a href="{% url "tournament:player_detail" player.pk %}">{{ player }}</a></li>
-        {% empty %}
-        <li>
-                No players yet.
-        </li>
+
+    {% for key, values in players.items %}
+        <h1>{{key}}</h1>
+        {% for v in values %}
+            <a>{{v}}</a>
+        {% endfor %}
     {% endfor %}
+
+
 {% endblock %}

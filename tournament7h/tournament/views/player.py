@@ -1,10 +1,15 @@
-from django.views.generic import ListView, DetailView
-from tournament.models import Player
+from django.views.generic import DetailView
+from tournament.models import Player, Team
+from django.shortcuts import render
 
 
-class PlayerListView(ListView):
-    model = Player
-    template_name = 'public/player_list.html'
+def player_list_view(request):
+    all_players = Player.objects.all()
+    return render(request, 'public/player_list.html',
+                  {
+                      'players': {'A': all_players, 'B': all_players }
+                  }
+                  )
 
 
 class PlayerDetailView(DetailView):

@@ -7,19 +7,47 @@
     <div class="container">
 
         {% for game in object_list %}
-            <div class="row">
 
-                <div class="col-md-4 text-center">
-                    {{ game.team_home }}
-                </div>
-                <div class="col-md-3">
-                    <a href="{% url "tournament:game_detail" game.pk %}">{{ game.date }}</a>
-                </div>
-                <div class="col-md-4 text-center">
-                    {{ game.team_away }}
-                </div>
+            <a href="{% url "tournament:game_detail" game.pk %}">
 
+
+            <div class="score-box text-center">
+
+            <!--
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ game.date|date:'d/m H:i'}}</h4>
+                    </div>
+                </div>
+                -->
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="row">
+                            <h5>{{ game.team_home }}</h5>
+                        </div>
+                        <div class="row">
+                            <h3>{{ game.amount_home }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>{{ game.date|date:'d/m H:i'}}</h4>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <h5>{{ game.team_away }}</h5>
+                        </div>
+                        <div class="row">
+                            <h3>{{ game.amount_away }}</h3>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+             </a>
+
+            <hr/>
+
         {% endfor %}
 
     </div>

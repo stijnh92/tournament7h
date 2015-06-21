@@ -7,8 +7,7 @@
     <div class="container">
         {% for group in object_list %}
 
-            {% if forloop.counter|divisibleby:2 %}<div class="row">{% endif %}
-                <div class="col-md-6">
+            <div class="col-md-6">
 
                     <h1><a href="{% url "tournament:group_detail" group.pk %}">{{ group.code }}</a></h1>
 
@@ -21,7 +20,7 @@
                                 Team
                             </th>
                             <th>
-                                +/-
+                                M
                             </th>
                             <th>
                                 Ptn.
@@ -37,7 +36,7 @@
                                     {{ team.team.name }}
                                 </td>
                                 <td>
-                                    {{ team.goals_ratio }}
+                                    {{ team.games_played }}
                                 </td>
                                 <th>
                                     {{ team.total_points }}
@@ -47,9 +46,6 @@
                     </table>
 
                 </div>
-
-            {% if forloop.counter|divisibleby:2 %}</div>{% endif %}
-
 
         {% endfor %}
     </div>

@@ -1,13 +1,53 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
 {% block title_html %}
     Teams
 {% endblock %}
 {% block article_content %}
-    {% for article in object_list %}
-        <li><a href="{% url "tournament:team_detail" article.pk %}">{{ article.name }}</a></li>
-        {% empty %}
-        <li>
-                No articles yet.
-        </li>
-    {% endfor %}
+
+    <div class="container">
+
+        {% for team in object_list %}
+
+            {% if forloop.counter0|divisibleby:3  %}
+                <div class="row">
+            {% endif %}
+
+
+
+        <div class="col-md-4">
+
+            <a href="{% url "tournament:team_detail" team.pk %}">
+            <div class="team_box">
+                <div class="row">
+                    <div class="col-md-4 col-xs-4">
+                        {% if team.image %}
+                            <img src="{{ team.image.url }}" class="img-responsive">
+                        {% else %}
+                            <img src="{% static "src/img/teams/placeholder.png" %}" alt="No img for team" class="img-responsive"/>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-8 col-xs-8">
+                        <h4>{{ team.name }}</h4>
+
+                        <p>
+                            {{ team.responsible }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+
+              {% if forloop.counter|divisibleby:3  %}
+                </div>
+            {% endif %}
+
+
+
+        {% endfor %}
+    </div>
+
 {% endblock %}
