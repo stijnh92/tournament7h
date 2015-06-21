@@ -13,8 +13,6 @@ def player_list_view(request):
             letter: Player.objects.filter(lastname__startswith=letter).order_by('lastname')
         })
 
-    print players
-
     return render(request, 'public/player_list.html',
                   {
                       'players': players
