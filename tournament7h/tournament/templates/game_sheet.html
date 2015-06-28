@@ -1,0 +1,111 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>My Title</title>
+
+    <link href="../static/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+
+    <style type="text/css">
+        @page {
+            size: {{ pagesize }};
+            margin: 2cm;
+        }
+        .player-table{
+            border: 1px solid black;
+        }
+        .content-column{
+            padding: 5px;
+        }
+        .player-table {
+            width: 375px;
+            vertical-align: text-top;
+        }
+        .team-header{
+            font-size: xx-large;
+            text-align: center;
+        }
+        #headerContent{
+            text-align: center;
+        }
+        #otherContent{
+            margin-top: 100px;
+        }
+        #remarks{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div id="headerContent">
+    <h1>Toernooi Zevenhuizen 2015</h1>
+    <h2>{{ game.date|date:'d/m H:i' }}</h2>
+    <h2>{{ game.location.name }}</h2>
+</div>
+
+<div id="teamContent">
+    <table>
+        <tr>
+            <td class="content-column" valign="top">
+                <h1 class="team-header">{{ game.team_home }}</h1>
+                <table class="player-table">
+                    <tr>
+                        <th width="50px">Nr.</th>
+                        <th width="250px">Naam</th>
+                        <th width="75px">Goals</th>
+                    </tr>
+                    {% for player in game.team_home.player_set.all %}
+                        <tr>
+                            <td width="50px">{{ player.number }}</td>
+                            <th width="250px">{{ player.firstname }} {{ player.lastname }}</th>
+                            <td width="75px"></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td class="content-column" valign="top">
+                <h1 class="team-header">{{ game.team_away }}</h1>
+                <table class="player-table">
+                    <tr>
+                        <th width="50px">Nr.</th>
+                        <th width="250px">Naam</th>
+                        <th width="75px">Goals</th>
+                    </tr>
+                    {% for player in game.team_away.player_set.all %}
+                        <tr>
+                            <td width="50px">{{ player.number }}</td>
+                            <th width="250px">{{ player.firstname }} {{ player.lastname }}</th>
+                            <td width="75px"></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="otherContent">
+    <table>
+        <tr>
+            <td valign="top" class="team-header">
+                Handtekening thuisploeg
+                <p>........................................</p>
+            </td>
+            <td valign="top" class="team-header">
+                Handtekening uitploeg
+                <p>........................................</p>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+</div>
+
+<div id="remarks">
+    <h1>Opmerkingen scheidsrechter: </h1>
+</div>
+</body>
+</html>

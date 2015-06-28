@@ -6,8 +6,14 @@
 {% block article_content %}
 
     <div class="jumbotron">
+        <a href="{% url "tournament:game_sheet" game.pk %}" class="pull-right btn btn-primary">
+            Print westrijdblad
+        </a>
+
         <h3>{{ object.group }}</h3>
         <h4>{{ object.date }}</h4>
+        <h4>{{ object.location.name }}</h4>
+
 
         <div class="row">
             <div class="col-md-10">

@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^games/$', view=game_view.GameListView.as_view(), name="game_list"),
     url(r'^games/(?P<pk>[0-9]+)/$', view=game_view.GameDetailView.as_view(), name="game_detail"),
 
+    url(r'^game_sheet/(?P<game_id>[0-9]+)/$', 'tournament.views.game.print_sheet', name="game_sheet"),
 ]

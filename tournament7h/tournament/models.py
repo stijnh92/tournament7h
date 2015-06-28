@@ -28,6 +28,10 @@ class Player(models.Model):
         return '%s %s' % (self.firstname, self.lastname)
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Location')
+
+
 class Group(models.Model):
     code = models.CharField(max_length=3, verbose_name='Group name')
 
@@ -100,6 +104,7 @@ class Game(models.Model):
     amount_home = models.IntegerField(verbose_name='Score Home')
     amount_away = models.IntegerField(verbose_name='Score Away')
     group = models.ForeignKey(Group, verbose_name='Group')
+    location = models.ForeignKey(Location, verbose_name='Location', blank=True, null=True)
     date = models.DateTimeField(verbose_name='Date', blank=True)
 
     def __str__(self):
