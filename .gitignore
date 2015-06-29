@@ -5,3 +5,4 @@ lib64
 *.pyo
 .idea
 tournament7h/tournament/static/src/img/teams
+tournament7h/tournament/migrations
