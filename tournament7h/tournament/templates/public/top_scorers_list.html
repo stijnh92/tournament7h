@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Top Scorers
+{% endblock %}
+{% block article_content %}
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Player
+                    </th>
+                    <th>
+                        Team
+                    </th>
+                    <th>
+                        Goals
+                    </th>
+                </tr>
+
+                {% for goal in top_scorers %}
+                    <tr class="{% if forloop.first %} info {%  endif %}">
+                        <td>
+                            <a href="{% url "tournament:player_detail" goal.player.pk %}">
+                                {{  goal.player.firstname }} {{  goal.player.lastname}}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url "tournament:team_detail" goal.player.team.pk %}">
+                                {{  goal.player.team.name }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ goal.sum_goals }}
+                        </td>
+                    </tr>
+                {%  endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

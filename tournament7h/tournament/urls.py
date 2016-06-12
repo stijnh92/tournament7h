@@ -4,6 +4,7 @@ from tournament.views import team as team_view
 from tournament.views import player as player_view
 from tournament.views import group as group_view
 from tournament.views import game as game_view
+from tournament.views import goal as top_scorers_view
 
 admin.autodiscover()
 
@@ -21,4 +22,6 @@ urlpatterns = [
     url(r'^games/(?P<pk>[0-9]+)/$', view=game_view.GameDetailView.as_view(), name="game_detail"),
 
     url(r'^game_sheet/(?P<game_id>[0-9]+)/$', 'tournament.views.game.print_sheet', name="game_sheet"),
+
+    url(r'^top_scorers/$', view=top_scorers_view.top_scorers_view, name="top_scorers_list"),
 ]
