@@ -11,40 +11,55 @@
             <a href="{% url "tournament:game_detail" game.pk %}">
 
 
-            <div class="score-box text-center">
+                <div class="score-box text-center">
 
-            <!--
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>{{ game.date|date:'d/m H:i'}}</h4>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="row">
+                                <h3>{{ game.team_home }}</h3>
+                            </div>
+                            {%  if game.finished %}
+                                <div class="row">
+                                    <h3>{{ game.amount_home }}</h3>
+                                </div>
+                            {%  endif %}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>{{ game.date|date:'d/m H:i'}}</h4>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>{{ game.location }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="circle">{{ game.group }}</h5>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <h3>{{ game.team_away }}</h3>
+                            </div>
+
+                            {%  if game.finished %}
+                                <div class="row">
+                                    <h3>{{ game.amount_away }}</h3>
+                                </div>
+                            {%  endif %}
+                        </div>
+
                     </div>
                 </div>
-                -->
-
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="row">
-                            <h5>{{ game.team_home }}</h5>
-                        </div>
-                        <div class="row">
-                            <h3>{{ game.amount_home }}</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <h4>{{ game.date|date:'d/m H:i'}}</h4>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="row">
-                            <h5>{{ game.team_away }}</h5>
-                        </div>
-                        <div class="row">
-                            <h3>{{ game.amount_away }}</h3>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-             </a>
+            </a>
 
             <hr/>
 

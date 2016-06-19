@@ -31,13 +31,16 @@ class Player(models.Model):
 class Location(models.Model):
     name = models.CharField(max_length=50, verbose_name='Location')
 
+    def __str__(self):
+        return self.name
+
 
 class Group(models.Model):
     code = models.CharField(max_length=3, verbose_name='Group name')
 
     def get_standing(self):
         teams = []
-        games = Game.objects.filter(group_id=self.id)
+        games = Game.objects.filter(group_id=self.id, finished=True)
         for game in games:
             if game.team_away not in teams:
                 teams.append(game.team_away)
@@ -106,6 +109,7 @@ class Game(models.Model):
     group = models.ForeignKey(Group, verbose_name='Group')
     location = models.ForeignKey(Location, verbose_name='Location', blank=True, null=True)
     date = models.DateTimeField(verbose_name='Date', blank=True)
+    finished = models.BooleanField(verbose_name='Finished')
 
     def __str__(self):
         return '%s, %s - %s' % (self.group, self.team_home, self.team_away)
